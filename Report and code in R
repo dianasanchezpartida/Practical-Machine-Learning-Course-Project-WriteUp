@@ -73,48 +73,48 @@ modelFit <- train(trainData$classe ~.,
                 trControl = tc,
                 prox = TRUE,
                 allowParallel = TRUE)
-## Loading required package: randomForest
-## randomForest 4.6-7
-## Type rfNews() to see new features/changes/bug fixes.
+# Loading required package: randomForest
+# randomForest 4.6-7
+# Type rfNews() to see new features/changes/bug fixes.
 
 #I expected relatively good model performance, and a relatively low out of sample error rate:
 print(modelFit)
-## Random Forest
-##
-## 11776 samples
-##   53 predictors
-##    5 classes: 'A', 'B', 'C', 'D', 'E'
-##
-## No pre-processing
-## Resampling: Cross-Validated (5 fold)
-##
-## Summary of sample sizes: 9421, 9420, 9422, 9421, 9420 
-##
-## Resampling results across tuning parameters:
-##
-##   mtry  Accuracy  Kappa  Accuracy SD  Kappa SD
-##   2    0.9921027  0.9900095  0.0026272210  0.003323988
-##  27    0.9968580  0.9960257  0.0008276806  0.001046769
-##  53    0.9944802  0.9930178  0.0012389239  0.001566650
-##
-## Accuracy was used to select the optimal model using  the largest value.
-## The final value used for the model was mtry = 27.
+# Random Forest
+
+# 11776 samples
+#   53 predictors
+#    5 classes: 'A', 'B', 'C', 'D', 'E'
+
+# No pre-processing
+# Resampling: Cross-Validated (5 fold)
+
+# Summary of sample sizes: 9421, 9420, 9422, 9421, 9420 
+
+# Resampling results across tuning parameters:
+
+#  mtry  Accuracy  Kappa  Accuracy SD  Kappa SD
+#   2    0.9921027  0.9900095  0.0026272210  0.003323988
+#  27    0.9968580  0.9960257  0.0008276806  0.001046769
+#  53    0.9944802  0.9930178  0.0012389239  0.001566650
+
+# Accuracy was used to select the optimal model using  the largest value.
+# The final value used for the model was mtry = 27.
 print(modelFit$finalModel)
-##
-## Call:
-##  randomForest(x = x, y = y, mtry = param$mtry, proximity = TRUE,      allowParallel = TRUE)
-##                Type of random forest: classification
-##                      Number of trees: 500
-## No. of variables tried at each split: 27
-##
-##         OOB estimate of  error rate: 1.55%
-## Confusion matrix:
-## A    B    C    D    E  class.error
-## A 3347    0    0    0    1 0.0002986858
-## B   10 2266    3    0    0 0.0057042563
-## C    0    6 2048    0    0 0.0029211295
-## D    0    0    6 1924    0 0.0031088083
-## E    0    0    0    8 2157 0.0036951501
+
+# Call:
+#  randomForest(x = x, y = y, mtry = param$mtry, proximity = TRUE,      allowParallel = TRUE)
+#                Type of random forest: classification
+#                      Number of trees: 500
+# No. of variables tried at each split: 27
+#
+#         OOB estimate of  error rate: 1.55%
+# Confusion matrix:
+# A    B    C    D    E  class.error
+# A 3347    0    0    0    1 0.0002986858
+# B   10 2266    3    0    0 0.0057042563
+# C    0    6 2048    0    0 0.0029211295
+# D    0    0    6 1924    0 0.0031088083
+# E    0    0    0    8 2157 0.0036951501
 
 #After having fit the model with training data, 
 #I have used it for predictions on test data. 
